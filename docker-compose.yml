@@ -1,0 +1,15 @@
+version: '2'
+services:
+    # ----- CLI
+    cli:
+        container_name: goscan_cli
+        build: cli/
+        restart: always
+        volumes:
+            - ./_data/:/data/goscan/
+            - ./goscan/:/go/src/github.com/marco-lancini/goscan
+        command: /bin/bash
+        environment:
+            GOSCAN_OUT_FOLDER: /data/goscan/
+            GOSCAN_DB_PATH: /data/goscan/goscan.db
+            DEBUG: 0
